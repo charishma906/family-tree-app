@@ -435,16 +435,20 @@ img{
 
 @media screen and (max-width: 768px) {
 
-  .app-main{
-    flex-direction:column;
+  .sidebar{
+    display:none;
   }
 
-  .sidebar{
+  .content{
     width:100%;
-    height:auto;
-    border-right:none;
-    border-bottom:1px solid var(--border);
+    flex:1;
+    overflow:auto;
   }
+
+  .app-main{
+    flex-direction:row;
+  }
+}
 
   .detail-panel{
     width:100%;
