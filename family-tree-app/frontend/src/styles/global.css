@@ -439,27 +439,46 @@ img{
 
 @media screen and (max-width: 768px) {
 
+  /* Full page scrolling */
+  html,
+  body,
+  #root{
+    height:auto !important;
+    min-height:100vh;
+    overflow-y:auto !important;
+  }
+
+  .app-shell{
+    height:auto !important;
+    min-height:100vh;
+    overflow:visible !important;
+  }
+
+  .app-main{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    overflow:visible !important;
+  }
+
   /* Hide left sidebar */
   .sidebar{
     display:none !important;
   }
 
-  /* Main layout */
-  .app-main{
-    display:block !important;
-    width:100% !important;
+  /* Hide desktop detail panel */
+  .detail-panel{
+    display:none !important;
   }
 
   .content{
     display:block !important;
     width:100% !important;
+    height:auto !important;
+    min-height:auto !important;
+    overflow:visible !important;
     padding:12px !important;
-    overflow:auto !important;
-  }
-
-  /* Hide desktop detail panel */
-  .detail-panel{
-    display:none !important;
+    padding-bottom:120px !important;
   }
 
   /* Full width pages */
@@ -470,8 +489,9 @@ img{
   .stats-wrap{
     width:100% !important;
     max-width:100% !important;
+    height:auto !important;
+    overflow:visible !important;
     padding:12px !important;
-    overflow:auto !important;
   }
 
   /* Topbar */
@@ -489,6 +509,11 @@ img{
     padding-bottom:5px;
     display:flex;
     gap:8px;
+    scrollbar-width:none;
+  }
+
+  .topbar-nav::-webkit-scrollbar{
+    display:none;
   }
 
   .nav-tab{
@@ -516,7 +541,7 @@ img{
 
   /* Tree */
   .tree-canvas{
-    overflow-x:auto;
+    overflow-x:auto !important;
   }
 
   .gen-row{
