@@ -337,3 +337,218 @@ a { color: var(--p); text-decoration: none; }
 .toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 300; display: flex; flex-direction: column; gap: 6px; }
 .toast { background: var(--text); color: var(--surface); padding: 10px 16px; border-radius: 9px; font-size: 12px; font-weight: 500; display: flex; align-items: center; gap: 7px; animation: toastin .2s ease; box-shadow: 0 4px 20px rgba(0,0,0,.2); }
 @keyframes toastin { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+/* General Responsive Settings */
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+}
+
+/* Tablet */
+@media screen and (max-width: 768px){
+
+  .container{
+    width:95%;
+    margin:auto;
+  }
+
+  .member-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+  }
+
+  .sidebar{
+    width:220px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 480px){
+
+  .member-grid{
+    grid-template-columns:1fr;
+  }
+
+  .member-card{
+    width:100%;
+  }
+
+  .sidebar{
+    width:100%;
+  }
+
+  button{
+    width:100%;
+    margin-top:10px;
+  }
+
+  input,
+  select,
+  textarea{
+    width:100%;
+  }
+
+  h1{
+    font-size:22px;
+  }
+
+  h2{
+    font-size:18px;
+  }
+}
+/* ========================= */
+/* TABLET RESPONSIVE */
+/* ========================= */
+
+@media screen and (max-width: 1024px) {
+
+  .sidebar{
+    width:200px;
+  }
+
+  .detail-panel{
+    width:240px;
+  }
+
+  .members-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .tree-canvas{
+    padding:15px;
+  }
+}
+
+/* ========================= */
+/* MOBILE RESPONSIVE */
+/* ========================= */
+
+@media screen and (max-width: 768px) {
+
+  .app-main{
+    flex-direction:column;
+  }
+
+  .sidebar{
+    width:100%;
+    height:auto;
+    border-right:none;
+    border-bottom:1px solid var(--border);
+  }
+
+  .detail-panel{
+    width:100%;
+    border-left:none;
+    border-top:1px solid var(--border);
+  }
+
+  .topbar{
+    flex-wrap:wrap;
+    height:auto;
+    padding:10px;
+  }
+
+  .topbar-nav{
+    width:100%;
+    overflow-x:auto;
+    margin-left:0;
+  }
+
+  .members-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .rel-type-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .tree-canvas{
+    overflow-x:auto;
+    overflow-y:auto;
+  }
+
+  .gen-row{
+    flex-wrap:nowrap;
+    min-width:max-content;
+  }
+
+  .modal{
+    max-width:95%;
+  }
+
+  .modal-body{
+    padding:15px;
+  }
+
+  .modal-footer{
+    flex-direction:column;
+  }
+
+  .btn-ok,
+  .btn-cancel{
+    width:100%;
+  }
+}
+
+/* ========================= */
+/* SMALL MOBILE */
+/* ========================= */
+
+@media screen and (max-width: 480px) {
+
+  .logo{
+    font-size:14px;
+  }
+
+  .det-name{
+    font-size:14px;
+  }
+
+  .tree-card{
+    min-width:90px;
+    padding:10px;
+  }
+
+  .tree-name{
+    font-size:11px;
+  }
+
+  .cal-grid{
+    gap:2px;
+  }
+
+  .cal-day{
+    min-height:50px;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .toast-container{
+    right:10px;
+    left:10px;
+  }
+
+  .toast{
+    width:100%;
+  }
+}
