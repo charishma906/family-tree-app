@@ -38,7 +38,13 @@ export default function MembersView({ ft, selectedId, setSelectedId, openModal, 
               <div
                 key={m._id}
                 className={`m-card${selectedId === String(m._id) ? ' selected' : ''}`}
-                onClick={() => setSelectedId(String(m._id))}
+                onClick={() => {
+  setSelectedId(String(m._id));
+
+  if (window.innerWidth <= 768) {
+    openModal('memberDetails', { id: m._id });
+  }
+}}
               >
                 <div className="m-card-top">
                   <div className="avatar" style={{ width: 46, height: 46, fontSize: 18, background: light, color: col }}>
@@ -69,12 +75,25 @@ export default function MembersView({ ft, selectedId, setSelectedId, openModal, 
         </div>
       </div>
 
-      <DetailPanel
-        members={members} relationships={relationships}
-        selectedId={selectedId} setSelectedId={setSelectedId}
-        openModal={openModal} onDelete={onDelete}
-        onPhotoUpload={handlePhotoUpload}
-      />
+      <div style={{ display:'flex', flex:1 }}>
+
+  <div className="members-wrap">
+    {/* your existing members list code */}
+  </div>
+
+  {window.innerWidth > 768 && (
+    <DetailPanel
+      members={members}
+      relationships={relationships}
+      selectedId={selectedId}
+      setSelectedId={setSelectedId}
+      openModal={openModal}
+      onDelete={onDelete}
+      onPhotoUpload={handlePhotoUpload}
+    />
+  )}
+
+</div>
     </div>
   );
 }
