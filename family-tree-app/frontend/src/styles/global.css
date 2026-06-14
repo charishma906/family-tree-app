@@ -433,33 +433,48 @@ img{
 /* MOBILE RESPONSIVE */
 /* ========================= */
 
+/* ========================= */
+/* MOBILE RESPONSIVE */
+/* ========================= */
+
 @media screen and (max-width: 768px) {
 
+  /* Hide left sidebar */
   .sidebar{
     display:none !important;
   }
-   .app-main{
-    display: block !important;
-   }
 
-  .content{
+  /* Main layout */
+  .app-main{
+    display:block !important;
     width:100% !important;
-    margin: 0 !important;
-    padding: 12px !important;
   }
 
   .content{
-    width:100% ;
-    flex:1;
-    overflow:auto;
+    display:block !important;
+    width:100% !important;
+    padding:12px !important;
+    overflow:auto !important;
   }
 
+  /* Hide desktop detail panel */
   .detail-panel{
-    width:100%;
-    border-left:none;
-    border-top:1px solid var(--border);
+    display:none !important;
   }
 
+  /* Full width pages */
+  .tree-canvas,
+  .timeline-wrap,
+  .members-wrap,
+  .cal-wrap,
+  .stats-wrap{
+    width:100% !important;
+    max-width:100% !important;
+    padding:12px !important;
+    overflow:auto !important;
+  }
+
+  /* Topbar */
   .topbar{
     flex-wrap:wrap;
     height:auto;
@@ -472,16 +487,20 @@ img{
     white-space:nowrap;
     margin-left:0;
     padding-bottom:5px;
+    display:flex;
+    gap:8px;
   }
 
   .nav-tab{
     flex-shrink:0;
   }
 
+  /* Members */
   .members-grid{
     grid-template-columns:1fr;
   }
 
+  /* Forms */
   .form-grid{
     grid-template-columns:1fr;
   }
@@ -490,20 +509,32 @@ img{
     grid-template-columns:repeat(2,1fr);
   }
 
+  /* Stats */
   .stats-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
+  /* Tree */
   .tree-canvas{
-    overflow:auto;
-    padding:10px;
+    overflow-x:auto;
   }
 
   .gen-row{
     flex-wrap:wrap;
     justify-content:center;
+    gap:12px;
   }
 
+  .tree-card{
+    min-width:110px;
+  }
+
+  /* Calendar */
+  .cal-grid{
+    overflow-x:auto;
+  }
+
+  /* Modals */
   .modal{
     max-width:95%;
   }
@@ -519,6 +550,16 @@ img{
   .btn-ok,
   .btn-cancel{
     width:100%;
+  }
+
+  /* Buttons */
+  .tb-btn{
+    font-size:12px;
+  }
+
+  .sb-add-btn{
+    width:36px;
+    height:36px;
   }
 }
 
