@@ -438,14 +438,18 @@ img{
   .sidebar{
     display:none !important;
   }
+   .app-main{
+    display: block !important;
+   }
 
   .content{
-    width:100%;
-    flex:1;
+    width:100% !important;
+    margin: 0 !important;
+    padding: 12px !important;
   }
 
   .content{
-    width:100%;
+    width:100% ;
     flex:1;
     overflow:auto;
   }
