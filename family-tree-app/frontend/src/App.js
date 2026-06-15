@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import './styles/global.css';
+import LandingPage from './pages/LandingPage';
 
 import useFamilyTree from './hooks/useFamilyTree';
 
