@@ -55,13 +55,51 @@ export default function App() {
   );
 
   const handleAddMember = async payload => {
-    const m = await ft.addMember(payload);
 
-    setSelectedId(m._id);
-    closeModal();
+  const m = await ft.addMember(payload);
 
-    toast(`${m.name} added to family tree`);
-  };
+  if (
+    payload.relationshipType &&
+    payload.relatedMember
+  ) {
+
+    if (payload.relationshipType === 'child') {
+
+      await ft.addRelationship({
+        type: 'parent',
+        parent: payload.relatedMember,
+        child: m._id
+      });
+
+    }
+
+    if (payload.relationshipType === 'parent') {
+
+      await ft.addRelationship({
+        type: 'parent',
+        parent: m._id,
+        child: payload.relatedMember
+      });
+
+    }
+
+    if (payload.relationshipType === 'spouse') {
+
+      await ft.addRelationship({
+        type: 'spouse',
+        a: payload.relatedMember,
+        b: m._id
+      });
+
+    }
+  }
+
+  setSelectedId(m._id);
+
+  closeModal();
+
+  toast(`${m.name} added to family tree`);
+};
 
   const handleEditMember = async (id, payload) => {
     await ft.editMember(id, payload);
@@ -244,24 +282,22 @@ export default function App() {
       {modal?.type ===
         'addMember' && (
         <MemberModal
-          onSave={
-            handleAddMember
-          }
-          onClose={
-            closeModal
-          }
-        />
+  members={ft.members}
+  onSave={handleAddMember}
+  onClose={closeModal}
+/>
       )}
 
       {modal?.type ===
         'editMember' && (
         <MemberModal
-          onSave={p =>
-            handleEditMember(
-              modal.data.id,
-              p
-            )
-          }
+  members={ft.members}
+  onSave={p =>
+    handleEditMember(
+      modal.data.id,
+      p
+    )
+  }
           onClose={
             closeModal
           }

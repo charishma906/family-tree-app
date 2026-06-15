@@ -1,20 +1,35 @@
 import React, { useState, useRef } from 'react';
 import { initials } from '../utils/helpers';
 
-export default function MemberModal({ member, onSave, onClose }) {
+export default function MemberModal({
+  member,
+  members = [],
+  onSave,
+  onClose
+}) {
+
   const editing = !!member;
+
   const [form, setForm] = useState({
-    name:   member?.name   || '',
-    dob:    member?.dob    || '',
+    name: member?.name || '',
+    dob: member?.dob || '',
     gender: member?.gender || 'M',
-    notes:  member?.notes  || '',
-    photo:  member?.photo  || null,
-    color:  member?.color  ?? 0,
+    notes: member?.notes || '',
+    photo: member?.photo || null,
+    color: member?.color ?? 0,
+
+    relationshipType: '',
+    relatedMember: ''
   });
+
   const [preview, setPreview] = useState(member?.photo || null);
   const fileRef = useRef();
 
-  const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
+  const set = (k, v) =>
+    setForm(f => ({
+      ...f,
+      [k]: v
+    }));
 
   const handlePhoto = e => {
     const file = e.target.files[0];
@@ -71,6 +86,51 @@ export default function MemberModal({ member, onSave, onClose }) {
                 <option value="O">Other</option>
               </select>
             </div>
+            <div className="form-field">
+  <label className="form-label">
+    Relationship Type
+  </label>
+
+  <select
+    className="form-select"
+    value={form.relationshipType}
+    onChange={e =>
+      set('relationshipType', e.target.value)
+    }
+  >
+    <option value="">None</option>
+    <option value="child">Child</option>
+    <option value="parent">Parent</option>
+    <option value="spouse">Spouse</option>
+  </select>
+</div>
+
+<div className="form-field">
+  <label className="form-label">
+    Related Member
+  </label>
+
+  <select
+    className="form-select"
+    value={form.relatedMember}
+    onChange={e =>
+      set('relatedMember', e.target.value)
+    }
+  >
+    <option value="">
+      Select Member
+    </option>
+
+    {members.map(m => (
+      <option
+        key={m._id}
+        value={m._id}
+      >
+        {m.name}
+      </option>
+    ))}
+  </select>
+</div>
             <div className="form-field full">
               <label className="form-label">Notes</label>
               <textarea className="form-input" rows={2} placeholder="Optional notes…" value={form.notes} onChange={e => set('notes', e.target.value)} style={{ resize: 'vertical' }} />
