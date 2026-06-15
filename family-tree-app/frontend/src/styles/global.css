@@ -601,8 +601,17 @@ img{
     z-index:9999;
     background:#fff;
     overflow-y:auto;
+
+    padding-bottom:100px;
   }
 
+  .det-actions{
+    position:sticky;
+    bottom:0;
+    background:#fff;
+    z-index:10000;
+  }
+}
   .mobile-close{
     display:flex;
     position:absolute;
@@ -616,4 +625,3 @@ img{
     align-items:center;
     justify-content:center;
   }
-}

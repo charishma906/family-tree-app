@@ -61,24 +61,49 @@ export default function DetailPanel({ members, relationships, selectedId, setSel
   }
 
   return (
-    <div className="detail-panel">
-      <div className="det-head">
-        <button
-    className="mobile-close"
-    onClick={() => setSelectedId(null)}
-  >
-    <i className="ti ti-x" />
-  </button>
-        <div className="det-av" style={{ background: light, color: col }}>
-          {m.photo ? <img src={m.photo} alt={initials(m.name)} /> : initials(m.name)}
-        </div>
-        <label className="photo-upload-label">
-          <i className="ti ti-camera" style={{ fontSize: 13 }} /> Photo
-          <input type="file" accept="image/*" style={{ display: 'none' }} onChange={e => onPhotoUpload(e, m._id)} />
-        </label>
-        <div className="det-name" style={{ marginTop: 6 }}>{m.name}</div>
-        <div className="det-sub">{m.gender === 'M' ? 'Male' : m.gender === 'F' ? 'Female' : 'Other'}</div>
+  <div className="detail-panel">
+
+    <div className="det-head">
+
+      <button
+        className="mobile-close"
+        onClick={() => setSelectedId(null)}
+      >
+        <i className="ti ti-x" />
+      </button>
+
+      <div
+        className="det-av"
+        style={{ background: light, color: col }}
+      >
+        {m.photo
+          ? <img src={m.photo} alt={initials(m.name)} />
+          : initials(m.name)}
       </div>
+
+      <label className="photo-upload-label">
+        <i className="ti ti-camera" style={{ fontSize: 13 }} /> Photo
+        <input
+          type="file"
+          accept="image/*"
+          style={{ display: 'none' }}
+          onChange={e => onPhotoUpload(e, m._id)}
+        />
+      </label>
+
+      <div className="det-name" style={{ marginTop: 6 }}>
+        {m.name}
+      </div>
+
+      <div className="det-sub">
+        {m.gender === 'M'
+          ? 'Male'
+          : m.gender === 'F'
+          ? 'Female'
+          : 'Other'}
+      </div>
+
+    </div>
 
       {/* Profile */}
       <div className="det-section">
