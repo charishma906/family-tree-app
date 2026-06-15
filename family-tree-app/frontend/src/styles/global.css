@@ -593,17 +593,21 @@ img{
 @media (max-width:768px){
 
   .detail-panel{
-    position:fixed;
-    top:0;
-    right:0;
-    width:100%;
-    height:100vh;
-    z-index:9999;
-    background:#fff;
-    overflow-y:auto;
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:100%;
+  height:100vh;
+  background:var(--surface);
+  z-index:9999;
+  overflow-y:auto;
+  transition:0.3s;
+  padding-bottom:100px;
+}
 
-    padding-bottom:100px;
-  }
+.detail-panel.show{
+  right:0;
+}
 
   .det-actions{
     position:sticky;
@@ -625,3 +629,22 @@ img{
     align-items:center;
     justify-content:center;
   }
+.mobile-close{
+  display:none;
+}
+
+@media(max-width:768px){
+
+  .mobile-close{
+    display:flex;
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#eee;
+    align-items:center;
+    justify-content:center;
+  }
+}
