@@ -353,64 +353,11 @@ img{
   height:auto;
 }
 
-/* Tablet */
-@media screen and (max-width: 768px){
-
-  .container{
-    width:95%;
-    margin:auto;
-  }
-
-  .member-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-  }
-
-  .sidebar{
-    width:220px;
-  }
-}
-
-/* Mobile */
-@media screen and (max-width: 480px){
-
-  .member-grid{
-    grid-template-columns:1fr;
-  }
-
-  .member-card{
-    width:100%;
-  }
-
-  .sidebar{
-    width:100%;
-  }
-
-  button{
-    width:100%;
-    margin-top:10px;
-  }
-
-  input,
-  select,
-  textarea{
-    width:100%;
-  }
-
-  h1{
-    font-size:22px;
-  }
-
-  h2{
-    font-size:18px;
-  }
-}
 /* ========================= */
-/* TABLET RESPONSIVE */
+/* TABLET */
 /* ========================= */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width:1024px){
 
   .sidebar{
     width:200px;
@@ -428,13 +375,13 @@ img{
     padding:15px;
   }
 }
+
 /* ========================= */
-/* MOBILE RESPONSIVE */
+/* MOBILE */
 /* ========================= */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width:768px){
 
-  /* Full page scrolling */
   html,
   body,
   #root{
@@ -456,6 +403,31 @@ img{
     overflow:visible !important;
   }
 
+  .sidebar{
+    display:none !important;
+  }
+
+  .content{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    overflow:visible !important;
+    padding:12px !important;
+    padding-bottom:120px !important;
+  }
+
+  .tree-canvas,
+  .timeline-wrap,
+  .members-wrap,
+  .cal-wrap,
+  .stats-wrap{
+    width:100% !important;
+    max-width:100% !important;
+    height:auto !important;
+    overflow:visible !important;
+    padding:12px !important;
+  }
+
   .detail-panel{
     position:fixed;
     top:0;
@@ -466,10 +438,7 @@ img{
     z-index:9999;
     overflow-y:auto;
     display:block !important;
-  }
-
-  .content{
-    width:100%;
+    border-left:none;
   }
 
   .det-actions{
@@ -484,31 +453,9 @@ img{
 
   .d-act{
     flex:1;
-  }
-  .content{
-    display:block !important;
-    width:100% !important;
-    height:auto !important;
-    min-height:auto !important;
-    overflow:visible !important;
-    padding:12px !important;
-    padding-bottom:120px !important;
+    min-width:90px;
   }
 
-  /* Full width pages */
-  .tree-canvas,
-  .timeline-wrap,
-  .members-wrap,
-  .cal-wrap,
-  .stats-wrap{
-    width:100% !important;
-    max-width:100% !important;
-    height:auto !important;
-    overflow:visible !important;
-    padding:12px !important;
-  }
-
-  /* Topbar */
   .topbar{
     flex-wrap:wrap;
     height:auto;
@@ -519,10 +466,9 @@ img{
     width:100%;
     overflow-x:auto;
     white-space:nowrap;
-    margin-left:0;
-    padding-bottom:5px;
     display:flex;
     gap:8px;
+    margin-left:0;
     scrollbar-width:none;
   }
 
@@ -534,12 +480,10 @@ img{
     flex-shrink:0;
   }
 
-  /* Members */
   .members-grid{
     grid-template-columns:1fr;
   }
 
-  /* Forms */
   .form-grid{
     grid-template-columns:1fr;
   }
@@ -548,12 +492,10 @@ img{
     grid-template-columns:repeat(2,1fr);
   }
 
-  /* Stats */
   .stats-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  /* Tree */
   .tree-canvas{
     overflow-x:auto !important;
   }
@@ -568,12 +510,10 @@ img{
     min-width:110px;
   }
 
-  /* Calendar */
   .cal-grid{
     overflow-x:auto;
   }
 
-  /* Modals */
   .modal{
     max-width:95%;
   }
@@ -590,44 +530,16 @@ img{
   .btn-cancel{
     width:100%;
   }
-
-  /* Buttons */
-  .tb-btn{
-    font-size:12px;
-  }
-
-  .sb-add-btn{
-    width:36px;
-    height:36px;
-  }
 }
 
 /* ========================= */
 /* SMALL MOBILE */
 /* ========================= */
 
-/* ========================= */
-/* SMALL MOBILE */
-/* ========================= */
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width:480px){
 
   .logo{
     font-size:14px;
-  }
-
-  .detail-actions{
-    position:sticky;
-    bottom:0;
-    background:var(--surface);
-    padding:15px;
-    display:flex;
-    gap:10px;
-    border-top:1px solid var(--border);
-  }
-
-  .detail-actions button{
-    flex:1;
   }
 
   .det-name{
@@ -664,53 +576,13 @@ img{
     width:100%;
   }
 
-}
-/* ================================= */
-/* FINAL MOBILE FIX */
-/* ================================= */
-
-@media screen and (max-width:768px){
-
-  .sidebar{
-    display:none !important;
+  button{
+    width:100%;
   }
 
-  .app-shell{
-    height:auto !important;
-    overflow:auto !important;
-  }
-
-  .app-main{
-    display:block !important;
-    overflow:auto !important;
-    height:auto !important;
-  }
-
-  .content{
-    display:block !important;
-    width:100% !important;
-    overflow:visible !important;
-    padding:10px !important;
-  }
-
-  .detail-panel{
-    width:100% !important;
-    position:relative !important;
-    display:block !important;
-    height:auto !important;
-    overflow:visible !important;
-    border-left:none !important;
-  }
-
-  .det-actions{
-    display:flex !important;
-    gap:8px;
-    flex-wrap:wrap;
-    padding:12px;
-  }
-
-  .d-act{
-    flex:1;
-    min-width:90px;
+  input,
+  select,
+  textarea{
+    width:100%;
   }
 }

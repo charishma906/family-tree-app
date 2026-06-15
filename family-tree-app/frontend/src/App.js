@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import './styles/global.css';
-import DetailPanel from './components/DetailPanel';
 
 import useFamilyTree from './hooks/useFamilyTree';
 
@@ -238,16 +237,6 @@ export default function App() {
   {tab === 'stats' && (
     <StatsView {...sharedProps} />
   )}
-
-  <DetailPanel
-    members={ft.members}
-    relationships={ft.relationships}
-    selectedId={selectedId}
-    setSelectedId={setSelectedId}
-    openModal={openModal}
-    onDelete={handleDeleteMember}
-    onPhotoUpload={() => {}}
-  />
 
 </div>
       </div>
