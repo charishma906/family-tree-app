@@ -62,8 +62,13 @@ export default function DetailPanel({ members, relationships, selectedId, setSel
 
   return (
     <div className="detail-panel">
-      {/* Header */}
       <div className="det-head">
+        <button
+    className="mobile-close"
+    onClick={() => setSelectedId(null)}
+  >
+    <i className="ti ti-x" />
+  </button>
         <div className="det-av" style={{ background: light, color: col }}>
           {m.photo ? <img src={m.photo} alt={initials(m.name)} /> : initials(m.name)}
         </div>

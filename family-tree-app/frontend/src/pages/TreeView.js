@@ -284,17 +284,15 @@ export default function TreeView({ ft, selectedId, setSelectedId, openModal, toa
         })}
       </div>
 
-      {selectedId && (
-  <DetailPanel
-    members={members}
-    relationships={relationships}
-    selectedId={selectedId}
-    setSelectedId={setSelectedId}
-    openModal={openModal}
-    onDelete={onDelete}
-    onPhotoUpload={handlePhotoUpload}
-  />
-)}
+     <DetailPanel
+  members={members}
+  relationships={relationships}
+  selectedId={selectedId}
+  setSelectedId={setSelectedId}
+  openModal={openModal}
+  onDelete={onDelete}
+  onPhotoUpload={handlePhotoUpload}
+/>
     </div>
   );
 }
