@@ -35,3 +35,4 @@ export default function AutoWish({ events = [] }) {
 
   return null;
 }
+export default AutoWish;
