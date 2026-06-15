@@ -88,6 +88,7 @@ function CoupleBlock({ m1, m2, commonChildren, members, relationships, selectedI
 export default function TreeView({ ft, selectedId, setSelectedId, openModal, toast, onDelete }) {
   const { members, relationships, generations } = ft;
   const [collapsedBranches, setCollapsedBranches] = useState(new Set());
+  const [dragMember, setDragMember] = useState(null);
 
   const toggleCollapse = useCallback((key) => {
     setCollapsedBranches(prev => {
@@ -252,7 +253,20 @@ export default function TreeView({ ft, selectedId, setSelectedId, openModal, toa
           });
 
           return (
-            <div key={g} className="gen-section">
+            <div
+  key={g}
+  className="gen-section"
+  onDragOver={(e)=>e.preventDefault()}
+  onDrop={async ()=>{
+
+    if(!dragMember) return;
+
+    alert(
+      `${dragMember.name} dropped into Generation ${g+1}`
+    );
+
+  }}
+>
               <div className="gen-label" style={{ color: gc }}>
                 <span style={{ background: `${gc}18`, padding: '2px 12px', borderRadius: 12 }}>
                   Generation {g + 1} <span style={{ opacity: 0.6, fontSize: 10 }}>({ids.length} member{ids.length !== 1 ? 's' : ''})</span>
@@ -275,8 +289,20 @@ export default function TreeView({ ft, selectedId, setSelectedId, openModal, toa
                     );
                   }
                   return grp.member ? (
-                    <TreeCard key={i} member={grp.member} selected={selectedId === String(grp.member._id)} onSelect={setSelectedId} />
-                  ) : null;
+  <div
+    key={i}
+    draggable
+    onDragStart={() => setDragMember(grp.member)}
+  >
+    <TreeCard
+      member={grp.member}
+      selected={selectedId === String(grp.member._id)}
+      onSelect={(id)=>{
+        setSelectedId(id);
+      }}
+    />
+  </div>
+) : null;
                 })}
               </div>
             </div>

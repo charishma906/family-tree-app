@@ -28,7 +28,7 @@ export default function App() {
   const [search, setSearch] = useState('');
   const [modal, setModal] = useState(null);
   const [toasts, setToasts] = useState([]);
-
+  const [showLanding, setShowLanding] = useState(true);
   const toast = useCallback((msg, icon = 'ti-check') => {
     const id = Date.now();
 
@@ -58,6 +58,8 @@ export default function App() {
   const handleAddMember = async payload => {
 
   const m = await ft.addMember(payload);
+  console.log("NEW MEMBER", m);
+console.log("PAYLOAD", payload);
 
   if (
     payload.relationshipType &&
@@ -66,11 +68,13 @@ export default function App() {
 
     if (payload.relationshipType === 'child') {
 
-      await ft.addRelationship({
-        type: 'parent',
-        parent: payload.relatedMember,
-        child: m._id
-      });
+      const rel = await ft.addRelationship({
+  type: 'parent',
+  parent: payload.relatedMember,
+  child: m._id
+});
+
+console.log("Relationship created:", rel);
 
     }
 
@@ -210,6 +214,13 @@ export default function App() {
     openModal,
     toast,
   };
+  if (showLanding) {
+  return (
+    <LandingPage
+      onStart={() => setShowLanding(false)}
+    />
+  );
+}
 
   return (
     <div className="app-shell">
@@ -230,7 +241,7 @@ export default function App() {
 
       <div className="app-main">
 
-        {window.innerWidth > 768 && (
+        {window.innerWidth > 1024 && (
           <Sidebar
             members={ft.members}
             relationships={
@@ -353,6 +364,14 @@ export default function App() {
           }
         />
       )}
+      {window.innerWidth <= 768 && (
+  <button
+    className="mobile-fab"
+    onClick={() => openModal('addMember')}
+  >
+    +
+  </button>
+)}
 
       <Toast toasts={toasts} />
     </div>
