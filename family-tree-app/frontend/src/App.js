@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import './styles/global.css';
 import LandingPage from './pages/LandingPage';
+import AutoWish from './components/AutoWish';
 
 import useFamilyTree from './hooks/useFamilyTree';
 
@@ -372,6 +373,7 @@ console.log("Relationship created:", rel);
     +
   </button>
 )}
+<AutoWish events={ft.events} />
 
       <Toast toasts={toasts} />
     </div>

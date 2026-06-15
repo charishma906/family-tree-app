@@ -478,3 +478,49 @@ body{
     gap:10px;
   }
 }
+.preview-showcase{
+  padding:80px 20px;
+  text-align:center;
+  background:#fff;
+}
+
+.preview-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.premium-cta{
+  text-align:center;
+  padding:100px 20px;
+  background:linear-gradient(135deg,#7c3aed,#2563eb);
+  color:white;
+}
+
+.premium-cta h2{
+  font-size:2.5rem;
+  margin-bottom:20px;
+}
+
+.premium-cta p{
+  max-width:700px;
+  margin:auto;
+  margin-bottom:30px;
+}
+
+.contact p{
+  margin:10px 0;
+}
+
+@media(max-width:768px){
+
+  .preview-grid{
+    grid-template-columns:1fr;
+  }
+
+  .premium-cta h2{
+    font-size:1.8rem;
+  }
+
+}

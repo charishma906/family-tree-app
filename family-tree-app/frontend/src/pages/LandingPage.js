@@ -112,28 +112,40 @@ export default function LandingPage({ onStart }) {
       </section>
 
       {/* Stats */}
-      <section id="stats" className="stats">
-        <div className="stat-card">
-          <h2>5000+</h2>
-          <p>Families</p>
-        </div>
-
-        <div className="stat-card">
-          <h2>25000+</h2>
-          <p>Members</p>
-        </div>
-
-        <div className="stat-card">
-          <h2>99.9%</h2>
-          <p>Secure Data</p>
-        </div>
-
-        <div className="stat-card">
-          <h2>24/7</h2>
-          <p>Cloud Access</p>
-        </div>
-      </section>
       <section className="live-stats">
+        <section className="preview-showcase">
+
+  <h2>FamilyRoots In Action</h2>
+
+  <div className="preview-grid">
+
+    <div className="card">
+      🌳
+      <h3>Interactive Family Tree</h3>
+      <p>Visualize generations beautifully.</p>
+    </div>
+
+    <div className="card">
+      👨‍👩‍👧‍👦
+      <h3>Member Profiles</h3>
+      <p>Store photos and family details.</p>
+    </div>
+
+    <div className="card">
+      🎂
+      <h3>Birthday Tracking</h3>
+      <p>Never miss important events.</p>
+    </div>
+
+    <div className="card">
+      📅
+      <h3>Calendar View</h3>
+      <p>See all family events in one place.</p>
+    </div>
+
+  </div>
+
+</section>
 
   <div className="stat-box">
     <h2>5000+</h2>
@@ -236,49 +248,57 @@ export default function LandingPage({ onStart }) {
       {/* FAQ */}
       <section id="faq" className="faq">
 
-        <h2>Frequently Asked Questions</h2>
+  <h2>Frequently Asked Questions</h2>
 
-        <div className="faq-item">
-          <h3>Is FamilyRoots free?</h3>
-          <p>Yes, basic features are free.</p>
-        </div>
+  <div className="faq-item">
+    <h3>Is FamilyRoots free?</h3>
+    <p>Yes. Core family tree features are free.</p>
+  </div>
 
-        <div className="faq-item">
-          <h3>Can I add photos?</h3>
-          <p>Yes, photos can be stored for members.</p>
-        </div>
+  <div className="faq-item">
+    <h3>Can I upload photos?</h3>
+    <p>Yes. Every member can have photos attached.</p>
+  </div>
 
-        <div className="faq-item">
-          <h3>Can I access from mobile?</h3>
-          <p>Yes, it works on all devices.</p>
-        </div>
+  <div className="faq-item">
+    <h3>Can I access from mobile?</h3>
+    <p>Yes. FamilyRoots works on all devices.</p>
+  </div>
 
-      </section>
+  <div className="faq-item">
+    <h3>Is my data secure?</h3>
+    <p>Your family information is stored securely.</p>
+  </div>
+
+  <div className="faq-item">
+    <h3>Can I export my tree?</h3>
+    <p>Yes. Export your family tree anytime.</p>
+  </div>
+
+</section>
 
       {/* Contact */}
       <section
-        id="contact"
-        className="contact"
-      >
-        <h2>Contact Us</h2>
+  id="contact"
+  className="contact"
+>
 
-        <p>
-          Email:
-          support@familyroots.com
-        </p>
+  <h2>Contact Us</h2>
 
-        <p>
-          Phone:
-          +91 9876543210
-        </p>
+  <p>📧 support@familyroots.com</p>
 
-        <button
-          className="primary-btn"
-          onClick={onStart}
-        >
-          Start Building Your Family Tree
-        </button>
-      </section>
+  <p>📞 +91 9876543210</p>
+
+  <p>📍 Bangalore, India</p>
+
+  <button
+    className="primary-btn"
+    onClick={onStart}
+  >
+    Start Building Your Family Tree
+  </button>
+
+</section>
       <section className="premium-cta">
 
   <h2>
