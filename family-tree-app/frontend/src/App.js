@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import './styles/global.css';
+import DetailPanel from './components/DetailPanel';
 
 import useFamilyTree from './hooks/useFamilyTree';
 
@@ -210,45 +211,45 @@ export default function App() {
           />
         )}
 
-        <div className="content">
+     <div className="content">
 
-          {tab === 'tree' && (
-            <TreeView
-              {...sharedProps}
-              onDelete={
-                handleDeleteMember
-              }
-            />
-          )}
+  {tab === 'tree' && (
+    <TreeView
+      {...sharedProps}
+      onDelete={handleDeleteMember}
+    />
+  )}
 
-          {tab === 'timeline' && (
-            <TimelineView
-              {...sharedProps}
-            />
-          )}
+  {tab === 'timeline' && (
+    <TimelineView {...sharedProps} />
+  )}
 
-          {tab === 'members' && (
-            <MembersView
-              {...sharedProps}
-              onDelete={
-                handleDeleteMember
-              }
-            />
-          )}
+  {tab === 'members' && (
+    <MembersView
+      {...sharedProps}
+      onDelete={handleDeleteMember}
+    />
+  )}
 
-          {tab === 'calendar' && (
-            <CalendarView
-              {...sharedProps}
-            />
-          )}
+  {tab === 'calendar' && (
+    <CalendarView {...sharedProps} />
+  )}
 
-          {tab === 'stats' && (
-            <StatsView
-              {...sharedProps}
-            />
-          )}
+  {tab === 'stats' && (
+    <StatsView {...sharedProps} />
+  )}
 
-        </div>
+  <DetailPanel
+    members={ft.members}
+    relationships={ft.relationships}
+    selectedId={selectedId}
+    setSelectedId={setSelectedId}
+    openModal={openModal}
+    onDelete={handleDeleteMember}
+    onPhotoUpload={() => {}}
+  />
+
+</div>
       </div>
 
       {modal?.type ===
@@ -329,5 +330,5 @@ export default function App() {
 
       <Toast toasts={toasts} />
     </div>
-  );
+  ); 
 }
