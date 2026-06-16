@@ -1,7 +1,14 @@
-import React, { useState, useCallback } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useCallback
+} from 'react';
 import './styles/global.css';
 import LandingPage from './pages/LandingPage';
 import AutoWish from './components/AutoWish';
+import { supabase } from "./supabase";
+import LoginPage from "./pages/LoginPage";
+import ProfileView from "./pages/ProfileView";
 
 import useFamilyTree from './hooks/useFamilyTree';
 
@@ -23,13 +30,30 @@ import Toast from './components/Toast';
 
 export default function App() {
   const ft = useFamilyTree();
+const [session, setSession] = useState(null);
 
+useEffect(() => {
+  supabase.auth.getSession().then(({ data }) => {
+    setSession(data.session);
+  });
+
+  const {
+    data: { subscription }
+  } = supabase.auth.onAuthStateChange(
+    (_event, session) => {
+      setSession(session);
+    }
+  );
+
+  return () => subscription.unsubscribe();
+}, []);
   const [tab, setTab] = useState('tree');
   const [selectedId, setSelectedId] = useState(null);
   const [search, setSearch] = useState('');
   const [modal, setModal] = useState(null);
   const [toasts, setToasts] = useState([]);
   const [showLanding, setShowLanding] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
   const toast = useCallback((msg, icon = 'ti-check') => {
     const id = Date.now();
 
@@ -180,6 +204,17 @@ console.log("Relationship created:", rel);
 
     toast('Exported as JSON', 'ti-download');
   };
+  if (showLanding) {
+  return (
+    <LandingPage
+      onStart={() => setShowLanding(false)}
+    />
+  );
+}
+
+if (!session) {
+  return <LoginPage />;
+}
 
   if (ft.loading) {
     return (
@@ -204,16 +239,15 @@ console.log("Relationship created:", rel);
         <div style={{ fontSize: 14 }}>
           Loading FamilyRoots…
         </div>
-      </div>
+      </div>                                                                                                                                                                      
     );
   }
-
   const sharedProps = {
     ft,
     selectedId,
     setSelectedId,
     openModal,
-    toast,
+    toast,                                                                                                                                            
   };
   if (showLanding) {
   return (
@@ -226,8 +260,9 @@ console.log("Relationship created:", rel);
   return (
     <div className="app-shell">
       <Topbar
-        tab={tab}
-        setTab={setTab}
+  session={session}
+  tab={tab}
+  setTab={setTab}
         trees={ft.trees}
         activeTreeId={ft.activeTreeId}
         setActiveTreeId={
@@ -288,6 +323,11 @@ console.log("Relationship created:", rel);
   {tab === 'stats' && (
     <StatsView {...sharedProps} />
   )}
+  {tab === "profile" && (
+  <ProfileView
+    session={session}
+  />
+)}
 
 </div>
       </div>
@@ -373,7 +413,6 @@ console.log("Relationship created:", rel);
     +
   </button>
 )}
-<AutoWish events={ft.events} />
 
       <Toast toasts={toasts} />
     </div>
